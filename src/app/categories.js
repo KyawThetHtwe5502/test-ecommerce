@@ -1,5 +1,5 @@
 import { categories, products } from "../core/data";
-import { cardList, categoryBtn, categoryList } from "../core/selectors"
+import { app, cardList, categoryBtn, categoryList } from "../core/selectors"
 import { productCardRender } from "./products";
 
 export const createCategory = (text) => {
@@ -14,9 +14,11 @@ export const categoryRender = () => {
 }
 export const categoryListHandler = (event) => {
     if(event.target.classList.contains("category-btn")){
+        app.querySelector(".active").classList.remove("active")
+        event.target.classList.add("active");
         cardList.innerHTML = "";
         const currentCategory = event.target.innerText;
-       const  currentProduct = products.filter((el) => el.category === currentCategory );
+       const  currentProduct = products.filter((el) => el.category === currentCategory || currentCategory === "All" );
         productCardRender(currentProduct);
     }
 }

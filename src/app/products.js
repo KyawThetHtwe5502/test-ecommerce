@@ -1,5 +1,5 @@
 import { products } from "../core/data";
-import { cardList, productCard } from "../core/selectors";
+import { cardList, cartBody, productCard } from "../core/selectors";
 
 
 export const  star = (rate) => {
@@ -21,6 +21,7 @@ export const createProduct = ({id,title,description,price,image,rating:{rate,cou
     const cardPrice = card.querySelector(".card-price");
     const cardRating = card.querySelector(".card-rating");
     const  cardStars = card.querySelector(".card-stars");
+    const addToCartBtn = card.querySelector(".add-to-cart");
     card.setAttribute("product-id",id);
     cardImg.src = image;
     cardTitle.innerText = title;
@@ -29,6 +30,12 @@ export const createProduct = ({id,title,description,price,image,rating:{rate,cou
     cardRating.innerText = `(${rate}/${count})`;
     cardStars.innerHTML = star(rate);
 
+    const isExitProduct = cartBody.querySelector(`[item-id='${id}']`)
+    if(isExitProduct){
+        addToCartBtn.classList.add("bg-neutral-600","text-white");
+        addToCartBtn.innerText = "Added"
+        addToCartBtn.disabled = true;
+    }
     return card;
     
 

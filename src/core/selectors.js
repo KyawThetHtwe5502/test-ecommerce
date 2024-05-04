@@ -11,3 +11,4 @@ export const cartCountBudget = app.querySelector("#cartCountBudget");
 export const cartBodyCount = app.querySelector("#cartBodyCount");
 export const cartOpenBtn = app.querySelector("#cartOpenBtn");
 export const closeBtn = app.querySelector("#closeBtn");
+export const searchInput = app.querySelector("#searchInput");
